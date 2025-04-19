@@ -4,6 +4,7 @@
 /// requires pandas; matplotlib.pyplot
 
 2.) 
+> 
 Info.collect(DataFrame.csv)
   > return main informations about data
 
