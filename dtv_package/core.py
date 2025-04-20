@@ -26,7 +26,7 @@ class Info:     #doesn't create an instance, because not necessary
             my_dictionary[i] = list(unique_series)  # adds key-value pair to dictionary; looks like this: "column": [<dtype>]
 
             """goal output: 'column': [<data_type>] <-- dictionary"""
-        return pd.DataFrame(my_dictionary)
+        return pd.Series(my_dictionary)
 
     @staticmethod
     def collect(dataF):
@@ -37,7 +37,14 @@ class Info:     #doesn't create an instance, because not necessary
 
         header = dataF.head()
 
-        return f"{header} \n \n ---> [rows, columns]: {shape} \n ---> NaN: {na_n} \n \n {dtypes}"      #\n to skip lines; more readable
+        return (f"{header} \n \n "
+                f"---> [rows, columns]: {shape} \n "
+                f"---> NaN: {na_n} \n "
+                f"\n ####column <-> dtype####\n " 
+                f"{dtypes}")
+
+            #\n to skip lines; more readable
+
 
 class Draw:
     @staticmethod
