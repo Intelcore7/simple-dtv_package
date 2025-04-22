@@ -48,7 +48,8 @@ class Info:     #doesn't create an instance, because not necessary
 
 class Draw:
     @staticmethod
-    def __init__(dataF, cl_list: list):
+    def plot_columns(dataF, cl_list):
+
         """for specific columns - draw diagram"""
         x = range(len(dataF))
         for column in cl_list:
@@ -61,4 +62,24 @@ class Draw:
 
 
 
+if __name__ == "__main__":
+    # Größere Beispiel-Daten erstellen
+    data = {
+        "A": [i for i in range(1, 21)],  # Zahlen von 1 bis 20
+        "B": [i * 2 for i in range(1, 21)],  # Zahlen von 2 bis 40 (Verdopplung)
+        "C": [i ** 2 for i in range(1, 21)],  # Quadratzahlen
+        "D": [None if i % 5 == 0 else i for i in range(1, 21)]  # NaN für Vielfache von 5
+    }
+    df = pd.DataFrame(data)
 
+    # Funktionen testen
+    print("=== Informationen über den DataFrame ===")
+    print(Info.collect(df))
+
+    # Diagramme zeichnen
+    print("\n=== Diagramme werden erstellt ===")
+    Draw.plot_columns(df, ["A", "B", "C", "D"])
+
+
+if __name__ == "__main__":
+    print("Debug: Der Code wird ausgeführt!")
